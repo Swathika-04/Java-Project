@@ -1,0 +1,59 @@
+import java.util.Scanner;
+public class Carrom
+{
+    public static void main(String[] args)
+    { 
+    int totalp1=0,totalp2=0;
+    
+    for(int i = 1; i < 4; i++)
+    {
+        var round = CarromRounds(i);
+        totalp1 += round.Player1points;
+        totalp2 += round.Player2points;
+        Result(i,totalp1,totalp2);
+    }
+    
+    if(totalp1>totalp2)
+    {
+        System.out.println("player 1 won.");
+    }
+    else if(totalp2>totalp1)
+    {
+       System.out.println("player 2 won.");  
+    }
+    else
+    {
+        System.out.println("DRAW");
+    }
+    }
+    
+    public static void Result(int round,int totalp1,int totalp2)
+    {
+       System.out.println(" ");
+       System.out.println("Round "+round+" results:");
+       System.out.println("Player 1:" + totalp1);
+       System.out.println("Player 2:" + totalp2);
+    }
+    
+    public static int CarromPlayer(int player)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("player " + player + ":");
+        return sc.nextInt();
+    }
+    
+    public static MyReturn CarromRounds(int round)
+    {
+        MyReturn myReturn = new MyReturn();
+        System.out.println(" ");
+        System.out.println("ROUND " + round );
+        myReturn.Player1points = CarromPlayer(1);
+        myReturn.Player2points = CarromPlayer(2);
+        return myReturn;
+    }
+    
+    public static class MyReturn {
+    public int Player1points;
+    public int Player2points;
+}
+}
