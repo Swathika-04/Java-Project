@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+class Employee
+{
+    String name;
+    int age;
+    int empID;
+    int salary;
+    Employee(String name,int age,int empID,int salary)
+    {
+        this.name=name;
+        this.age=age;
+        this.empID=empID;
+        this.salary=salary;
+    }
+    void showInfo()
+    {
+        System.out.println("---Details---");
+        System.out.println("Name : "+name);
+        System.out.println("Age  : "+age);
+        System.out.println("Employee ID : "+empID);
+        System.out.println("Salary : "+salary);
+    }
+    
+}
+class Expenses extends Employee
+{
+    double Food;
+    double Medical;
+    double Rent;
+    double Shopping;
+    double otherExp;
+    Expenses(String name,int age,int empID,int salary,double Food,double Medical,double Rent,double Shopping,double otherExp)
+    {   
+        super(name,age,empID,salary);
+        this.Food=Food;
+        this.Medical=Medical;
+        this.Rent=Rent;
+        this.Shopping=Shopping;
+        this.otherExp=otherExp;
+    }
+    double TotalExp()
+    {
+        
+        return Food+Medical+Rent+Shopping+otherExp;
+    }
+    double Balance()
+    {
+        
+        return salary-TotalExp();
+    }
+    void showInfo()
+    {
+        super.showInfo();
+        System.out.println("---EXPENSES---");
+        System.out.println("Food :"+Food);
+        System.out.println("Medical :"+Medical);
+        System.out.println("Rent "+Rent);
+        System.out.println("Shopping :"+Shopping);
+        System.out.println("Other Expenses :"+otherExp);
+        
+        System.out.println("---TOTAL EXPENSES---");
+        System.out.println("Total Expenses :"+TotalExp());
+        
+        System.out.println("---BALANCE SALARY---");
+        System.out.println("Balance Salary :"+Balance());
+    }
+}
+public class SalaryWithOops
+{
+public static void main (String[]args)
+{
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Name :");
+    String name=sc.nextLine();
+    System.out.print("Age :");
+    int age =sc.nextInt();
+    System.out.print("Employee ID :");
+    int empID=sc.nextInt();
+    System.out.print("Salary :");
+    int salary=sc.nextInt();
+    
+    System.out.println("---Expenses---");
+    System.out.print("food Expense :");
+    double Food =sc.nextDouble();
+    System.out.print("Medical Expense :");
+    double Medical=sc.nextDouble();
+    System.out.print("Rent Expense :");
+    double Rent=sc.nextDouble();
+    System.out.print("Shopping Expense :");
+    double Shopping=sc.nextDouble();
+    System.out.print("Other Expense :");
+    double otherExp =sc.nextDouble();
+    
+    Expenses obj = new Expenses(name,age,empID,salary,Food,Medical,Rent,Shopping,otherExp);
+   
+    obj.TotalExp();
+    obj.Balance();
+    obj.showInfo();
+    
+}   
+}
+    
+    
+    
