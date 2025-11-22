@@ -1,0 +1,50 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+class SalaryException {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("ENTER YOUR SALARY:");
+            double salary = sc.nextDouble();
+
+            System.out.println("EXPENSES:");
+
+            System.out.println("Food expense:");
+            double food = sc.nextDouble();
+
+            System.out.println("Medical expense:");
+            double medical = sc.nextDouble();
+
+            System.out.println("House rent:");
+            double rent = sc.nextDouble();
+
+            System.out.println("Shopping expense:");
+            double shopping = sc.nextDouble();
+
+            double totalExpense = food + medical + rent + shopping;
+            double balanceSalary = salary - totalExpense;
+
+            System.out.println("Balance Salary: " + balanceSalary);
+        }
+
+        catch (InputMismatchException e) {
+            System.out.println("Error: Please enter only numeric values.");
+        }
+
+        catch (ArithmeticException e) {
+            System.out.println("Math error occurred: " + e.getMessage());
+        }
+
+        catch (Exception e) {
+            System.out.println("Unexpected error: " + e.getMessage());
+        }
+
+        finally {
+            sc.close();
+            System.out.println("Program ended.");
+        }
+    }
+}
